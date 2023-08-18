@@ -15,7 +15,7 @@ A modern chat application built with Flask.
 ## Setup & Usage 💼
 
 ### Dependencies 📦
-Make sure to install the following dependencies using pip:
+Make sure to install the following dependencies:
 
 ```
 pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcrypt flask-session cryptography apscheduler redis email-validator WTForms pymysql
