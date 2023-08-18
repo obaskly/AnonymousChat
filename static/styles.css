@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.form-container {
+    background-color: rgba(32, 35, 42, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: scale(1);
+}
+
+.error-message {
+    color: red;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+input[type="text"], input[type="password"], textarea {
+    width: 92%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background: transparent;
+    color: #FFF;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #61dafb;
+    outline: none;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #61dafb;
+    color: #20232a;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #4fa8d4;
+    transform: translateY(-2px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+ul.flashes {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+ul.flashes li {
+    background-color: #e35050;
+    color: white;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+ul.flashes li.success {
+    background-color: #4CAF50;
+}
+
+/* New Styles for Form Errors */
+.form-error {
+    display: inline-block;
+    font-size: 0.9em;
+    color: #FF4B47;
+    margin: 5px 0;
+    padding-left: 10px;
+}
+
+input[type="text"].error, input[type="password"].error, textarea.error {
+    border-color: #FF4B47;
+    background-color: rgba(255, 75, 71, 0.1);
+}
+
+a {
+    color: #61dafb;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4fa8d4;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.lifespan-selection {
+    display: flex;
+    align-items: flex-end;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+
+select {
+    background-color: transparent;
+    color: #FFF !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 6px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+select option {
+    background-color: rgba(32, 35, 42, 0.8);
+    color: #FFF !important;
+}
+
+select:focus {
+    border-color: #61dafb;
+    outline: none;
+}
+
+.lifespan-selection label {
+    margin-right: 10px;
+}
+
+.messages-container {
+    max-height: 120px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
