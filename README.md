@@ -63,12 +63,12 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 	
 	1. **Windows**:
 	    ```
-	    setx MYSQL_URI "mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"
+	    setx DATABASE_URI "mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"
 	    ```
 	
 	2. **MacOS and Linux**:
 	    ```
-	    echo 'export MYSQL_URI="mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"' >> ~/.bash_profile
+	    echo 'export DATABASE_URI="mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"' >> ~/.bash_profile
 	    source ~/.bash_profile
 	    ```
 	
