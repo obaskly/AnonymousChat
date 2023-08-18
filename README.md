@@ -18,7 +18,7 @@ A modern chat application built with Flask.
 Make sure to install the following dependencies using pip:
 
 ```
-pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcrypt flask-session cryptography apscheduler redis email-validator WTForms
+pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcrypt flask-session cryptography apscheduler redis email-validator WTForms pymysql
 ```
 
 ### Database Setup (MySQL) 🗃️
@@ -57,6 +57,22 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
     mysql -u username -p
     ```
 
+6. **Setting up the MySQL URI as an Environmental Variable**:
+
+	For security reasons, it's recommended to store sensitive data like database URIs as environmental variables rather than hardcoding them into your application.
+	
+	1. **Windows**:
+	    ```
+	    setx MYSQL_URI "mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"
+	    ```
+	
+	2. **MacOS and Linux**:
+	    ```
+	    echo 'export MYSQL_URI="mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"' >> ~/.bash_profile
+	    source ~/.bash_profile
+	    ```
+	
+	Replace `[USERNAME]`, `[PASSWORD]`, `[HOST]`, and `[DATABASE_NAME]` with your actual database credentials.
 
 ### Redis Setup 🎈
 1. **Download and Install Redis**:
