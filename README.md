@@ -1,4 +1,4 @@
-# Anonymous Chat 🚀
+# Anonymous Chat 💬🚀
 
 A modern chat application built with Flask.
 
