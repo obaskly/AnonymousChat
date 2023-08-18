@@ -125,12 +125,10 @@ class MessageForm(FlaskForm):
     seconds = SelectField('Seconds', choices=[(str(i), str(i)) for i in range(60)], default='0')
 
     def validate(self, **kwargs):
-        # First, run the built-in validation
         rv = super(MessageForm, self).validate(**kwargs)
         if not rv:
             return False
 
-        # Check if all time fields are set to '0'
         if self.hours.data == '0' and self.minutes.data == '0' and self.seconds.data == '0':
             self.hours.errors.append('Please select a self-destruct time.')
             return False
