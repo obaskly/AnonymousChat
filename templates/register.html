@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form method="post" action="/register">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message, category in get_flashed_messages(with_categories=true) %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {{ form.hidden_tag() }}
+            
+            <label>{{ form.username.label }}</label>
+            {{ form.username(placeholder="Username", class="error" if form.username.errors else None) }}
+            {% if form.username.errors %}
+                <span class="form-error">
+                    {% for error in form.username.errors %}
+                        {{ error }}<br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+            
+            <label>{{ form.email.label }}</label>
+            {{ form.email(placeholder="Email", class="error" if form.email.errors else None) }}
+            {% if form.email.errors %}
+                <span class="form-error">
+                    {% for error in form.email.errors %}
+                        {{ error }}<br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+            
+            <label>{{ form.password.label }}</label>
+            {{ form.password(placeholder="Password", class="error" if form.password.errors else None) }}
+            {% if form.password.errors %}
+                <span class="form-error">
+                    {% for error in form.password.errors %}
+                        {{ error }}<br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+            
+            {{ form.submit() }}
+        </form>
+    </div>
+</body>
+</html>

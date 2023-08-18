@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Chat</h2>
+        <form method="post" action="/chat">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message, category in get_flashed_messages(with_categories=true) %}
+							<li class="{{ category }}">{{ message }}</li>
+						{% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {{ form.hidden_tag() }}
+            <label>{{ form.recipient.label }}</label>
+            {{ form.recipient(placeholder="Recipient's Username") }}
+            <label>{{ form.content.label }}</label>
+            {{ form.content(placeholder="Enter your message here...") }}
+			
+			{% if form.hours.errors %}
+				<ul class="errors">
+					{% for error in form.hours.errors %}
+						<li class="error-message">{{ error }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+            <div class="lifespan-selection">
+				<label>Self-destruct after:</label>
+				<div class="time-unit">
+					<label for="hours">Hours</label>
+					{{ form.hours(id="hours") }}
+				</div>
+				<div class="time-unit">
+					<label for="minutes">Minutes</label>
+					{{ form.minutes(id="minutes") }}
+				</div>
+				<div class="time-unit">
+					<label for="seconds">Seconds</label>
+					{{ form.seconds(id="seconds") }}
+				</div>
+			</div>
+
+            {{ form.submit() }}
+        </form>
+        <h3>Messages</h3>
+		<div class="messages-container">
+			{% for message in messages %}
+				<p>{{ message }}</p>
+			{% endfor %}
+		</div>
+        <a href="/logout">Logout</a>
+    </div>
+	<script nonce="{{ g.nonce }}">
+		const messagesContainer = document.querySelector('.messages-container');
+		if (messagesContainer) {
+			messagesContainer.scrollTop = messagesContainer.scrollHeight;
+		}
+	</script>
+</body>
+</html>
