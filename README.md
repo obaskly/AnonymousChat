@@ -95,7 +95,6 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 4. **Secure Your Redis Server**:
     - Go to the Redis configuration file. Sometimes you might have two configuration files, edit both.
         - Uncomment the line: `bind 127.0.0.1`
-        - Restart the Redis server.
     - **Set a Password and Disable Dangerous Commands**:
         - In the configuration file(s), add:
 
