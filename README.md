@@ -27,7 +27,7 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
     - **Windows**: Download the [MySQL Installer](https://dev.mysql.com/downloads/installer/) and follow the prompts.
     - **MacOS**: Use Homebrew: `brew install mysql`
     - **Linux (Ubuntu)**:
-        ```
+        ```bash
         sudo apt update
         sudo apt install mysql-server
         ```
@@ -39,13 +39,13 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 
 3. **Securing MySQL**:
     After installing, it's crucial to secure your MySQL installation:
-    ```
+    ```bash
     sudo mysql_secure_installation
     ```
 
 4. **Connecting to MySQL**:
     Use the following command to interact with MySQL:
-    ```
+    ```bash
     mysql -u root -p
     ```
     And enter your password
@@ -68,12 +68,12 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 	For security reasons, it's recommended to store sensitive data like database URIs as environmental variables rather than hardcoding them into your application.
 	
 	1. **Windows**:
-	    ```
+	    ```bash
 	    setx DATABASE_URI "mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"
 	    ```
 	
 	2. **MacOS and Linux**:
-	    ```
+	    ```bash
 	    echo 'export DATABASE_URI="mysql+pymysql://god:Amine1010<3!@localhost/anonymouschatdb"' >> ~/.bash_profile
             source ~/.bash_profile
 	    ```
@@ -87,7 +87,7 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
         2. Download and install from [Redis Windows Release](https://github.com/microsoftarchive/redis/releases/download/win-3.0.504/Redis-x64-3.0.504.msi)
     - **MacOS**: Use Homebrew: `brew install redis`
     - **Linux (Ubuntu)**:
-        ```
+        ```bash
         sudo apt update
         sudo apt install redis-server
         ```
@@ -187,7 +187,7 @@ Flask applications can be served using a combination of Nginx and Gunicorn. Ngin
 1. Navigate to your Flask application directory.
 2. Run your app with Gunicorn:
     ```bash
-    gunicorn app:app -b 127.0.0.1:5000
+    gunicorn main:app -b 127.0.0.1:5000
     ```
 
 ### Windows Setup (using WSL) 🪟
