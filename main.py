@@ -404,6 +404,8 @@ def encrypt_key(key, password, salt=None):
 def decrypt_key(encrypted_key, password, salt):
     derived_key = derive_key(password, salt)[0]
     cipher = Fernet(base64.urlsafe_b64encode(derived_key))
+    if isinstance(encrypted_key, str):
+        encrypted_key = encrypted_key.encode()
     decrypted = cipher.decrypt(encrypted_key)
     return decrypted
 
