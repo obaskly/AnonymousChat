@@ -74,7 +74,7 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 	
 	2. **MacOS and Linux**:
 	    ```bash
-	    echo 'export DATABASE_URI="mysql+pymysql://god:Amine1010<3!@localhost/anonymouschatdb"' >> ~/.bash_profile
+	    echo 'export DATABASE_URI="mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"' >> ~/.bash_profile
        source ~/.bash_profile
 	    ```
 	
