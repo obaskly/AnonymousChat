@@ -117,6 +117,110 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
             - Linux: `export REDIS_PASSWORD="YOUR_PASSWORD_HERE"`
         - Restart your Redis server.
 
+
+## Setting up Nginx and Gunicorn for Flask 🚀
+
+Flask applications can be served using a combination of Nginx and Gunicorn. Nginx acts as a reverse proxy, directing web traffic to backend applications served by Gunicorn. This guide will walk you through setting up this configuration on both Windows and Linux systems.
+
+### Table of Contents 📝
+1. [Prerequisites](#prerequisites)
+2. [Linux Setup](#linux-setup)
+    - [Installing Nginx](#installing-nginx)
+    - [Installing Gunicorn](#installing-gunicorn)
+    - [Configuring Nginx for Flask](#configuring-nginx-for-flask)
+    - [Running the Flask App with Gunicorn](#running-the-flask-app-with-gunicorn)
+3. [Windows Setup (using WSL)](#windows-setup-using-wsl)
+    - [Installing Windows Subsystem for Linux (WSL)](#installing-windows-subsystem-for-linux-wsl)
+    - [Follow Linux Setup Inside WSL](#follow-linux-setup-inside-wsl)
+
+### Prerequisites 🔍
+- A Flask application.
+- Basic knowledge of the command line.
+
+### Linux Setup 🐧
+
+#### Installing Nginx 💻
+1. Update your package lists:
+    ```bash
+    sudo apt update
+    ```
+2. Install Nginx:
+    ```bash
+    sudo apt install nginx
+    ```
+
+#### Installing Gunicorn 🦄
+1. Ensure you have `pip` installed:
+    ```bash
+    sudo apt install python3-pip
+    ```
+2. Install Gunicorn:
+    ```bash
+    pip3 install gunicorn
+    ```
+
+#### Configuring Nginx for Flask 🛠️
+1. Create a new Nginx configuration for your Flask app:
+    ```bash
+    sudo nano /etc/nginx/sites-available/myflaskapp
+    ```
+
+2. Add the following to the configuration file, adjusting the server_name and proxy_pass as needed:
+    ```nginx
+    server {
+        listen 80;
+        server_name yourdomain.com www.yourdomain.com;
+
+        location / {
+            proxy_pass http://127.0.0.1:5000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+    ```
+
+3. Create a symbolic link to the `sites-enabled` directory:
+    ```bash
+    sudo ln -s /etc/nginx/sites-available/myflaskapp /etc/nginx/sites-enabled
+    ```
+
+4. Test Nginx configuration:
+    ```bash
+    sudo nginx -t
+    ```
+
+5. Reload Nginx to apply changes:
+    ```bash
+    sudo systemctl reload nginx
+    ```
+
+#### Running the Flask App with Gunicorn 🚀
+1. Navigate to your Flask application directory.
+2. Run your app with Gunicorn:
+    ```bash
+    gunicorn app:app -b 127.0.0.1:8000
+    ```
+
+### Windows Setup (using WSL) 🪟
+
+#### Installing Windows Subsystem for Linux (WSL) 🖥️
+1. Open PowerShell as Administrator.
+2. Run the following command to enable the WSL feature:
+    ```bash
+    wsl --install
+    ```
+
+3. Reboot your computer if prompted.
+4. Install your preferred Linux distribution from the Microsoft Store (e.g., Ubuntu).
+
+#### Follow Linux Setup Inside WSL ⬆️
+Once you have WSL and a Linux distribution installed, you can follow the [Linux Setup](#linux-setup) section above to set up Nginx and Gunicorn inside your WSL environment.
+
+---
+
+That's it! 🎉 Your Flask application should now be accessible via your domain, served by Gunicorn, and proxied by Nginx.
+
 ## Contribution 🤝
 Feel free to fork, improve, make pull requests or fill issues. I'll appreciate any help and feedback!
 
@@ -124,4 +228,4 @@ Feel free to fork, improve, make pull requests or fill issues. I'll appreciate a
 This project is open-source and available under the MIT License.
 
 ---
-**Happy Coding!** 🎉
+**Happy Coding!** 💻🐍
