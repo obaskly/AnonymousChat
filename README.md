@@ -199,7 +199,7 @@ Flask applications can be served using a combination of Nginx and Gunicorn. Ngin
 1. Navigate to your Flask application directory.
 2. Run your app with Gunicorn:
     ```bash
-    gunicorn app:app -b 127.0.0.1:8000
+    gunicorn app:app -b 127.0.0.1:5000
     ```
 
 ### Windows Setup (using WSL) 🪟
