@@ -43,18 +43,24 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
     sudo mysql_secure_installation
     ```
 
-4. **Creating a New User**:
-    By default, MySQL will have a 'root' user. To create a new user:
-    ```sql
-    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-    GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
-	FLUSH PRIVILEGES;
-    ```
-
-5. **Connecting to MySQL**:
+4. **Connecting to MySQL**:
     Use the following command to interact with MySQL:
     ```
-    mysql -u username -p
+    mysql -u root -p
+    ```
+    And enter your password
+
+5. **Creating a New Database & User**:
+   Create a new database:
+   ```
+   CREATE DATABASE anonymouschatdb;
+   ```
+   By default, MySQL will have a 'root' user. But we will create a new user:
+    ```
+    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON anonymouschatdb.* TO 'username'@'localhost';
+    FLUSH PRIVILEGES;
+    exit;
     ```
 
 6. **Setting up the MySQL URI as an Environmental Variable**:
@@ -68,8 +74,7 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 	
 	2. **MacOS and Linux**:
 	    ```
-	    echo 'export DATABASE_URI="mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"' >> ~/.bash_profile
-	    source ~/.bash_profile
+	    export DATABASE_URI="mysql+pymysql://[USERNAME]:[PASSWORD]@[HOST]/[DATABASE_NAME]"
 	    ```
 	
 	Replace `[USERNAME]`, `[PASSWORD]`, `[HOST]`, and `[DATABASE_NAME]` with your actual database credentials.
