@@ -120,21 +120,9 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 
 ## Setting up Nginx and Gunicorn for Flask 🚀
 
-Flask applications can be served using a combination of Nginx and Gunicorn. Nginx acts as a reverse proxy, directing web traffic to backend applications served by Gunicorn. This guide will walk you through setting up this configuration on both Windows and Linux systems.
-
-### Table of Contents 📝
-1. [Prerequisites](#prerequisites)
-2. [Linux Setup](#linux-setup)
-    - [Installing Nginx](#installing-nginx)
-    - [Installing Gunicorn](#installing-gunicorn)
-    - [Configuring Nginx for Flask](#configuring-nginx-for-flask)
-    - [Running the Flask App with Gunicorn](#running-the-flask-app-with-gunicorn)
-3. [Windows Setup (using WSL)](#windows-setup-using-wsl)
-    - [Installing Windows Subsystem for Linux (WSL)](#installing-windows-subsystem-for-linux-wsl)
-    - [Follow Linux Setup Inside WSL](#follow-linux-setup-inside-wsl)
+Flask applications can be served using a combination of Nginx and Gunicorn. Nginx acts as a reverse proxy, directing web traffic to backend applications served by Gunicorn.
 
 ### Prerequisites 🔍
-- A Flask application.
 - Basic knowledge of the command line.
 
 ### Linux Setup 🐧
