@@ -52,11 +52,11 @@ pip install flask flask-sqlalchemy flask-login flask-wtf flask-limiter flask-bcr
 
 5. **Creating a New Database & User**:
    Create a new database:
-   ```
+   ```sql
    CREATE DATABASE anonymouschatdb;
    ```
    By default, MySQL will have a 'root' user. But we will create a new user:
-    ```
+    ```sql
     CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
     GRANT ALL PRIVILEGES ON anonymouschatdb.* TO 'username'@'localhost';
     FLUSH PRIVILEGES;
