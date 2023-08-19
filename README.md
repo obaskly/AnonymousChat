@@ -221,6 +221,12 @@ Once you have WSL and a Linux distribution installed, you can follow the [Linux 
 
 That's it! 🎉 Your Flask application should now be accessible via your domain, served by Gunicorn, and proxied by Nginx.
 
+## Website live 🎥
+
+https://github.com/obaskly/AnonymousChat/assets/11092871/908a8466-1bc8-4996-abe5-0453a4aaa86e
+
+
+
 ## Contribution 🤝
 Feel free to fork, improve, make pull requests or fill issues. I'll appreciate any help and feedback!
 
