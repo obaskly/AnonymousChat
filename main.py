@@ -57,8 +57,8 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    public_key = db.Column(db.Text, nullable=True)
-    encrypted_private_key = db.Column(db.Text, nullable=True)
+    public_key = db.Column(db.String(5000), nullable=True)
+    encrypted_private_key = db.Column(db.String(9000), unique=True, nullable=True)
     salt = db.Column(db.String(120), nullable=True)
 
     sent_messages = db.relationship('Message', backref='sender', lazy=True, foreign_keys='Message.sender_id')
@@ -85,7 +85,7 @@ class User(db.Model):
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     encrypted_content = db.Column(db.String(5000), nullable=False)
-    encrypted_key = db.Column(db.String(9000), nullable=False)
+    encrypted_key = db.Column(db.String(5000), nullable=False)
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
@@ -403,9 +403,9 @@ def encrypt_key(key, password, salt=None):
 
 def decrypt_key(encrypted_key, password, salt):
     derived_key = derive_key(password, salt)[0]
-    cipher = Fernet(base64.urlsafe_b64encode(derived_key))
     if isinstance(encrypted_key, str):
         encrypted_key = encrypted_key.encode()
+    cipher = Fernet(base64.urlsafe_b64encode(derived_key))
     decrypted = cipher.decrypt(encrypted_key)
     return decrypted
 
