@@ -57,8 +57,8 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    public_key = db.Column(db.String(5000), nullable=True)
-    encrypted_private_key = db.Column(db.String(9000), unique=True, nullable=True)
+    public_key = db.Column(db.Text, nullable=True)
+    encrypted_private_key = db.Column(db.Text, nullable=True)
     salt = db.Column(db.String(120), nullable=True)
 
     sent_messages = db.relationship('Message', backref='sender', lazy=True, foreign_keys='Message.sender_id')
@@ -186,6 +186,12 @@ def derive_key(password, salt=None):
 @app.errorhandler(ValidationError)
 def handle_csrf_error(e):
     return "Something went wrong.", 400
+
+
+@app.errorhandler(400)
+def handle_400_error(e):
+    logout_user()
+    return redirect(url_for('welcome'))
 
 
 @app.errorhandler(404)
